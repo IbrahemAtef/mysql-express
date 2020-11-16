@@ -31,7 +31,7 @@ app.get('/createdb', (req, res)=>{
     })
 })
 
-// create database
+// create table
 app.get('/createpoststable', (req, res) => {
     let sql = 'CREATE TABLE posts(id int AUTO_INCREMENT, title VARCHAR(255), body VARCHAR(255), PRIMARY KEY (id))';
     db.query(sql, (err, result) => {
