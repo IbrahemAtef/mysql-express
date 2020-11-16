@@ -127,6 +127,15 @@ app.get('/getCustomersWithTotalPrice', (req, res) => {
     })
 })
 
+app.get('/getCustomersWithItemsTheyBuyAndDate', (req, res) => {
+    let sql = `SELECT c.first_name, c.last_name, s.date_of_purchase, i.item from customers c JOIN items i JOIN sales s WHERE c.customer_id = s.customer_id AND s.item_code = i.item_code
+    `;
+    let query = db.query(sql, (err, result) => {
+        if(err) throw err;
+        res.send(result);
+    })
+})
+
 app.listen('3000', ()=>{
     console.log(`Server started on prot 3000`);
 })
